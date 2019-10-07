@@ -40,13 +40,25 @@ class App extends React.Component {
         this.setState({teams: teams});
     }
 
+    validateTable() {
+        let teams = this.state.teams;
+        let goals = { plus: 0, minus: 0 };
+
+        teams.forEach(team => {
+            goals.plus += team.goalPlus;
+            goals.minus += team.goalMinus;
+        });
+
+        return goals.plus === goals.minus;
+    }
+
     render() {
         let { groupData, teams } = this.state;
 
         return (
         <div className="App">
             {teams ? (
-                <table>
+                <table className={(this.validateTable() ? 'valid' : 'error')}>
                     <caption>{groupData}</caption>
                     <thead>
                         <tr>
