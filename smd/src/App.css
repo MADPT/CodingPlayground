@@ -11,7 +11,11 @@ table.error {
 }
 
 table th {
-    min-width: 50px;
+    min-width: 80px;
+}
+
+table th span {
+    cursor: pointer;
 }
 
 button.reverse-btn {

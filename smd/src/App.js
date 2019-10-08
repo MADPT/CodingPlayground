@@ -1,4 +1,5 @@
 import React from 'react';
+import TableHeader from './components/table_header';
 import './App.css';
 
 const API = 'https://sport.api.swisstxt.ch/v1/rankings/8481?lang=de';
@@ -18,29 +19,42 @@ class App extends React.Component {
             .then(data => {
                 this.setState({
                     groupData: data.sport.name + ' - ' + data.reference.name,
-                    teams: data.rankingItems
+                    teams: data.rankingItems,
+                    currentCat: ''
                 });
 
                 this.sortTeam('goalPlus');
             });
     }
 
-    sortTeam(filter) {
+    sortTeam = (filter) => {
         let teams = this.state.teams;
 
-        if (filter !== 'reverse') {
-            teams.sort(function(a, b) {
-                return b[filter] - a[filter];
-            });
-        }
-        else {
-            teams.reverse();
-        }
+        switch(filter) {
+            case 'reverse':
+                teams.reverse();
+              break;
+            case 'competitor.name':
+                teams.sort((a, b) => a['competitor']['name'].localeCompare(b['competitor']['name']));
+              break;
+            case 'rank':
+                teams.sort(function(a, b) {
+                    return a[filter] - b[filter];
+                });
+              break;
+            default:
+                teams.sort(function(a, b) {
+                    return b[filter] - a[filter];
+                });
+          }
+          if (filter !== 'reverse') {
+            this.setState({currentCat: filter});
+          }
 
         this.setState({teams: teams});
     }
 
-    validateTable() {
+    validateTable = () => {
         let teams = this.state.teams;
         let goals = { plus: 0, minus: 0 };
 
@@ -53,7 +67,7 @@ class App extends React.Component {
     }
 
     render() {
-        let { groupData, teams } = this.state;
+        let { groupData, teams, currentCat } = this.state;
 
         return (
         <div className="App">
@@ -62,21 +76,16 @@ class App extends React.Component {
                     <caption>{groupData}</caption>
                     <thead>
                         <tr>
-                            <th>Rank</th>
-                            <th>Team</th>
-                            <th>Played</th>
-                            <th>Won</th>
-                            <th>Draws</th>
-                            <th>Lost</th>
-                            <th>
-                                For
-                                <button className="reverse-btn" onClick={this.sortTeam.bind(this,'reverse')}>
-                                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" className="reverse-icon"><path fill="currentColor" d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41zm255-105L177 64c-9.4-9.4-24.6-9.4-33.9 0L24 183c-15.1 15.1-4.4 41 17 41h238c21.4 0 32.1-25.9 17-41z"></path></svg>
-                                </button>
-                            </th>
-                            <th>Against</th>
-                            <th>Diff</th>
-                            <th>Points</th>
+                            <TableHeader title={'Rank'} filter={'rank'} currentCat={currentCat} handleClick={this.sortTeam} handleReverse={this.sortTeam}></TableHeader>
+                            <TableHeader title={'Team'} filter={'competitor.name'} currentCat={currentCat} handleClick={this.sortTeam} handleReverse={this.sortTeam}></TableHeader>
+                            <TableHeader title={'Played'} filter={'games'} currentCat={currentCat} handleClick={this.sortTeam} handleReverse={this.sortTeam}></TableHeader>
+                            <TableHeader title={'Won'} filter={'gamesWon'} currentCat={currentCat} handleClick={this.sortTeam} handleReverse={this.sortTeam}></TableHeader>
+                            <TableHeader title={'Draw'} filter={'gamesDraw'} currentCat={currentCat} handleClick={this.sortTeam} handleReverse={this.sortTeam}></TableHeader>
+                            <TableHeader title={'Lost'} filter={'gamesLost'} currentCat={currentCat} handleClick={this.sortTeam} handleReverse={this.sortTeam}></TableHeader>
+                            <TableHeader title={'For'} filter={'goalPlus'} currentCat={currentCat} handleClick={this.sortTeam} handleReverse={this.sortTeam}></TableHeader>
+                            <TableHeader title={'Against'} filter={'goalMinus'} currentCat={currentCat} handleClick={this.sortTeam} handleReverse={this.sortTeam}></TableHeader>
+                            <TableHeader title={'Diff'} filter={'goalDifference'} currentCat={currentCat} handleClick={this.sortTeam} handleReverse={this.sortTeam}></TableHeader>
+                            <TableHeader title={'Points'} filter={'points'} currentCat={currentCat} handleClick={this.sortTeam} handleReverse={this.sortTeam}></TableHeader>
                         </tr>
                     </thead>
                     <tbody>
