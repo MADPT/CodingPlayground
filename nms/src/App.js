@@ -24,14 +24,17 @@ class App extends React.Component {
         let { products } = this.state;
 
         return (
-            <div className="App">
+            <div className="product">
                 <h1>Recommend Products</h1>
-                <ul>
+                <ul className="product__list">
                     {products.slice(0, recProd).map(product =>
-                        <li key={product.id}>
-                            <img src={'/' + product['product-photo']} alt={product.label} />
+                        <li key={product.id} className='product__item'>
+                            <img className="product__image" src={'/' + product['product-photo']} alt={product.label} />
                             <p>{product.label}</p>
                             <p>{product['short-description']}</p>
+                            {product.sale &&
+                                <div>Sale</div>
+                            }
                         </li>
                     )}
                 </ul>

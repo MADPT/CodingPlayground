@@ -1,0 +1,30 @@
+.product__list {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    list-style-type: none;
+}
+
+.product__item {
+    position: relative;
+    flex-wrap: wrap;
+    max-width: 500px;
+    overflow: hidden;
+    margin: 20px;
+}
+
+.product__image {
+    max-height: 250px;
+}
