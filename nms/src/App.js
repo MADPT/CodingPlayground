@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import Header from './components/header';
+import ProductsList from './components/products_list';
 
 const API = 'http://localhost:4000/products';
 
@@ -20,24 +22,12 @@ class App extends React.Component {
     }
 
     render() {
-        const recProd = 3;
         let { products } = this.state;
 
         return (
             <div className="product">
-                <h1>Recommend Products</h1>
-                <ul className="product__list">
-                    {products.slice(0, recProd).map(product =>
-                        <li key={product.id} className='product__item'>
-                            <img className="product__image" src={'/' + product['product-photo']} alt={product.label} />
-                            <p>{product.label}</p>
-                            <p>{product['short-description']}</p>
-                            {product.sale &&
-                                <div>Sale</div>
-                            }
-                        </li>
-                    )}
-                </ul>
+                <Header></Header>
+                <ProductsList products={products}></ProductsList>
             </div>
         );
     }
