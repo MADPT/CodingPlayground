@@ -34,20 +34,29 @@ class App extends React.Component {
             });
     }
 
+    loadMore() {
+        let page = this.state.page;
+        // TODO: get query on loadMore()
+        this.getNews('', page+1);
+    }
+
     render() {
-        let {news } = this.state;
+        let {news, moreNews } = this.state;
 
         return (
             <div className="App">
                 {news ?(
-                    <ul>
-                    {news.map(singleNews => 
-                        <li key={singleNews.objectID}>
-                            <a href={singleNews.url} target="_blank">{singleNews.title}</a>
-                            <p>By {singleNews.author} - {singleNews.num_comments} comments at {new Date(singleNews.created_at_i * 1000).toISOString().slice(0, 19).replace('T', ' ')} </p>
-                        </li>
-                    )}
-                    </ul>
+                    <React.Fragment>
+                        <ul>
+                        {news.map(singleNews => 
+                            <li key={singleNews.objectID}>
+                                <a href={singleNews.url} target="_blank">{singleNews.title}</a>
+                                <p>By {singleNews.author} - {singleNews.num_comments} comments at {new Date(singleNews.created_at_i * 1000).toISOString().slice(0, 19).replace('T', ' ')} </p>
+                            </li>
+                        )}
+                        </ul>
+                        <button onClick={this.loadMore.bind(this)} disabled={!moreNews}>{moreNews ? 'Load More' : 'No more news'}</button>
+                    </React.Fragment>
                 ) : (
                     <h1>No news</h1>
                 )}
