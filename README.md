@@ -1,2 +1,2 @@
 # CodingPlayground
-Coding challenges, assessments, exercices, problems, etc
+Coding challenges, assessments, exercises, problems, etc
