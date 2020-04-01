@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+// Font weights
+$regular: 400;
+$medium: 500;
+$bold: 700;
+
+// Base Font
+$base-font-family: "Roboto", sans-serif;
+$base-font-weight: $regular;
+$base-font-size: 16px;
+$base-font-line-height: 22px;
+
+@mixin title {
+  font-family: $base-font-family;
+  font-weight: $bold;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+@mixin paragraph($weight: regular) {
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  line-height: $base-font-line-height;
+
+  @if $weight == "regular" {
+    font-weight: $regular;
+  } @else if $weight == "medium" {
+    font-weight: $medium;
+  }
+}
+
+@mixin tag {
+  font-family: $base-font-family;
+  font-weight: $bold;
+  font-size: 12px;
+  line-height: 16px;
+}
