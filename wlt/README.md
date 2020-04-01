@@ -174,4 +174,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run all [CRA scripts](https://github.com/facebook/create-react-app#creating-an-app).
 
-** Note: ** Due to [Concurrently](https://www.npmjs.com/package/concurrently), running `npm start` while also run `json-server` concurrently.
+**Note:** Due to [Concurrently](https://www.npmjs.com/package/concurrently), running `npm start` while also run `json-server` concurrently.
