@@ -4,20 +4,20 @@ const API = {
   url: "http://localhost:4000/assignment",
   endpoints: {
     register: "/register",
-    posts: "/posts"
+    posts: "/posts",
   },
-  pageLimit: 10
+  pageLimit: 10,
 };
 const credentials = {
   client_id: "ju16a6m81mhid5ue1z3v2g0uh",
   email: "dev@miguelangelo.io",
   name: "Miguel Angelo",
-  sl_token: ""
+  sl_token: "",
 };
 
 const processedPostsData = {
   charactersData: {},
-  postsData: {}
+  postsData: {},
 };
 
 /**
@@ -32,7 +32,7 @@ function handleCharactersData(message, createdTime) {
   let charactersData = processedPostsData.charactersData;
   let date = {
     year: getDateValue(createdTime, "year"),
-    month: getDateValue(createdTime, "month") + 1
+    month: getDateValue(createdTime, "month") + 1,
   };
   let messageLength = message.length;
 
@@ -45,7 +45,7 @@ function handleCharactersData(message, createdTime) {
       totalPosts: 0,
       totalLength: 0,
       longestPost: 0,
-      averageLength: 0
+      averageLength: 0,
     };
   }
 
@@ -74,7 +74,7 @@ function handlePostsData(userId, createdTime) {
   let date = {
     year: getDateValue(createdTime, "year"),
     month: getDateValue(createdTime, "month") + 1,
-    week: getDateValue(createdTime, "week")
+    week: getDateValue(createdTime, "week"),
   };
 
   if (!postsData.hasOwnProperty(date.year)) {
@@ -85,7 +85,7 @@ function handlePostsData(userId, createdTime) {
     postsData[date.year][date.month] = {
       userTotal: {},
       average: 0,
-      totalPerWeek: {}
+      totalPerWeek: {},
     };
   }
 
@@ -134,11 +134,14 @@ function processPosts(posts) {
  */
 function runAssignment() {
   fetchData()
-    .then(posts => {
+    .then((posts) => {
       return processPosts(posts);
     })
-    .then(data => {
+    .then((data) => {
       console.log(data);
+    })
+    .catch((err) => {
+      console.error(err);
     });
 }
 
@@ -151,37 +154,24 @@ runAssignment();
  *
  * @returns {Promise} Promise object represents all posts
  */
-function fetchData() {
-  return new Promise((resolve, reject) => {
-    registerToken()
-      .then(token => {
-        return getPosts(token, [], 1);
-      })
-      .then(data => {
-        resolve(data);
-      })
-      .catch(err => reject(err));
-  });
-}
-
-/**
- * Register client's token
- *
- * @returns {Promise} Promise object represents API token
- */
-function registerToken() {
-  return fetch(API.url + API.endpoints.register, {
-    /* method: 'POST', */
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json"
-    }
-    // body: JSON.stringify(credentials)
-  })
-    .then(response => response.json())
-    .then(data => {
-      return (credentials.sl_token = data.data.sl_token);
+async function fetchData() {
+  try {
+    // Register client's token
+    const response = await fetch(API.url + API.endpoints.register, {
+      /* method: 'POST', */
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // body: JSON.stringify(credentials)
     });
+    const data = await response.json();
+    credentials.sl_token = data.data.sl_token;
+
+    return fetchPosts(credentials.sl_token, [], 1);
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 /**
@@ -189,20 +179,22 @@ function registerToken() {
  *
  * @returns {Promise} Promise object represents all posts
  */
-function getPosts(token, allData, page) {
-  return fetch(API.url + API.endpoints.posts + "?sl_token=" + token + "&page=" + page, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-    .then(response => response.json())
-    .then(data => {
-      allData = [...allData, ...data[0].posts];
-      let nextPage = page + 1;
-      if (nextPage <= API.pageLimit) return getPosts(token, allData, nextPage);
-      else return allData;
+async function fetchPosts(token, allData, page) {
+  try {
+    let response = await fetch(API.url + API.endpoints.posts + "?sl_token=" + token + "&page=" + page, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
+    let data = await response.json();
+
+    allData = [...allData, ...data[0].posts];
+    let nextPage = page + 1;
+    return nextPage <= API.pageLimit ? await fetchPosts(token, allData, nextPage) : allData;
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 /** HELPERS */
