@@ -1,11 +1,11 @@
 export const offersReducer = (offers, action) => {
-  const offerIndex = offers.findIndex(({ id }) => id == action.payload.id);
+  const offerIndex = offers.findIndex(({ id }) => id === action.payload.id);
 
   switch (action.type) {
     case "ACCEPT":
       const newArray = [...offers];
 
-      newArray.map((offer) => {
+      newArray.forEach((offer) => {
         offer.status = offer.id === action.payload.id ? "Accepted" : "Rejected";
 
         if (offer.id === action.payload.id && action.payload.message.length) {
