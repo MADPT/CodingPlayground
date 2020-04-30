@@ -8,7 +8,7 @@ export const offersReducer = (offers, action) => {
       newArray.forEach((offer) => {
         offer.status = offer.id === action.payload.id ? "Accepted" : "Rejected";
 
-        if (offer.id === action.payload.id && action.payload.message.length) {
+        if (offer.id === action.payload.id && action.payload.hasOwnProperty("message")) {
           offer.sellerMessage = action.payload.message;
         }
       });
