@@ -1,7 +1,8 @@
 export const offersReducer = (offers, action) => {
+  const offerIndex = offers.findIndex(({ id }) => id == action.payload.id);
+
   switch (action.type) {
     case "ACCEPT":
-      console.log("Offer accepted");
       const newArray = [...offers];
 
       newArray.map((offer) => {
@@ -15,9 +16,6 @@ export const offersReducer = (offers, action) => {
       return newArray;
 
     case "REJECT":
-      console.log("Offer rejected");
-      const offerIndex = offers.findIndex(({ id }) => id == action.payload.id);
-
       return Object.assign([...offers], {
         [offerIndex]: {
           ...offers[offerIndex],
@@ -27,8 +25,17 @@ export const offersReducer = (offers, action) => {
       });
 
     case "COUNTER":
-      console.log("Counter offer");
-      return offers;
+      return Object.assign([...offers], {
+        [offerIndex]: {
+          ...offers[offerIndex],
+          status: "Counter",
+          counterOffer: {
+            expirationDate: action.payload.expirationDate,
+            price: action.payload.price,
+            sellerMessage: action.payload.message,
+          },
+        },
+      });
 
     default:
       return offers;
