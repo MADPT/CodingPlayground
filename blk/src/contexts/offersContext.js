@@ -1,9 +1,10 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useReducer } from "react";
+import { offersReducer } from "../reducers/offersReducer";
 
 export const OffersContext = createContext();
 
 const OffersContextProvider = (props) => {
-  const [offers, setOffers] = useState([
+  const [offers, dispatch] = useReducer(offersReducer, [
     {
       id: 1,
       buyerName: "Kaappo Nikkilä",
@@ -34,7 +35,7 @@ const OffersContextProvider = (props) => {
       status: "new",
     },
   ]);
-  return <OffersContext.Provider value={{ offers }}>{props.children}</OffersContext.Provider>;
+  return <OffersContext.Provider value={{ offers, dispatch }}>{props.children}</OffersContext.Provider>;
 };
 
 export default OffersContextProvider;
