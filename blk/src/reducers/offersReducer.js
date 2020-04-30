@@ -32,7 +32,7 @@ export const offersReducer = (offers, action) => {
           counterOffer: {
             expirationDate: action.payload.expirationDate,
             price: action.payload.price,
-            sellerMessage: action.payload.message,
+            sellerMessage: action.payload.message || "",
           },
         },
       });
