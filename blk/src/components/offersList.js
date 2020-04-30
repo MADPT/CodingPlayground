@@ -17,6 +17,7 @@ const OffersList = () => {
               {offer.buyerName} - {offer.price} - {offer.buyerMessage} - {offer.status}
               <div>
                 <button onClick={() => dispatch({ type: "ACCEPT", payload: { id: offer.id, message: "Congratulations" } })}>Accept</button>
+                <button onClick={() => dispatch({ type: "REJECT", payload: { id: offer.id, message: "Price too low" } })}>Reject</button>
               </div>
             </li>
           );

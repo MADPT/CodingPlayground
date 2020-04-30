@@ -16,7 +16,15 @@ export const offersReducer = (offers, action) => {
 
     case "REJECT":
       console.log("Offer rejected");
-      return offers;
+      const offerIndex = offers.findIndex(({ id }) => id == action.payload.id);
+
+      return Object.assign([...offers], {
+        [offerIndex]: {
+          ...offers[offerIndex],
+          status: "Rejected",
+          sellerMessage: action.payload.message,
+        },
+      });
 
     case "COUNTER":
       console.log("Counter offer");
