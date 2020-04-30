@@ -14,6 +14,10 @@ const OffersList = () => {
               <button onClick={() => dispatch({ type: "ACCEPT" })}>Accept</button>
               <button onClick={() => dispatch({ type: "REJECT" })}>Reject</button>
               <button onClick={() => dispatch({ type: "COUNTER" })}>Counter</button>
+              {offer.buyerName} - {offer.price} - {offer.buyerMessage} - {offer.status}
+              <div>
+                <button onClick={() => dispatch({ type: "ACCEPT", payload: { id: offer.id, message: "Congratulations" } })}>Accept</button>
+              </div>
             </li>
           );
         })}

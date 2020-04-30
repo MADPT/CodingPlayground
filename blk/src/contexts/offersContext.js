@@ -11,7 +11,7 @@ const OffersContextProvider = (props) => {
       expirationDate: "00/00/00 00:00",
       price: 97000,
       buyerMessage: "Lorem Ipsum",
-      status: "counter",
+      status: "Counter",
       counterOffer: {
         expirationDate: "00/00/00 00:00",
         price: 98000,
@@ -24,7 +24,7 @@ const OffersContextProvider = (props) => {
       expirationDate: "00/00/00 00:00",
       price: 97500,
       buyerMessage: "Foo Bar",
-      status: "new",
+      status: "New",
     },
     {
       id: 3,
@@ -32,7 +32,7 @@ const OffersContextProvider = (props) => {
       expirationDate: "00/00/00 00:00",
       price: 95000,
       buyerMessage: "Lorem Foo Ipsum Bar",
-      status: "new",
+      status: "New",
     },
   ]);
   return <OffersContext.Provider value={{ offers, dispatch }}>{props.children}</OffersContext.Provider>;
