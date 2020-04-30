@@ -13,11 +13,13 @@ const OffersList = () => {
           return (
             <li key={offer.id}>
               {offer.buyerName} - {offer.price} - {offer.buyerMessage} - {offer.status}
-              <div>
-                <button onClick={() => dispatch({ type: "ACCEPT", payload: { id: offer.id, message: "Congratulations" } })}>Accept</button>
-                <button onClick={() => dispatch({ type: "REJECT", payload: { id: offer.id, message: "Price too low" } })}>Reject</button>
-                <button onClick={() => dispatch({ type: "COUNTER", payload: { id: offer.id, price: "100000", expirationDate: "00/00/00 00:00", message: "New offer" } })}>Counter</button>
-              </div>
+              {offer.status === "New" && (
+                <div>
+                  <button onClick={() => dispatch({ type: "ACCEPT", payload: { id: offer.id, message: "Congratulations" } })}>Accept</button>
+                  <button onClick={() => dispatch({ type: "REJECT", payload: { id: offer.id, message: "Price too low" } })}>Reject</button>
+                  <button onClick={() => dispatch({ type: "COUNTER", payload: { id: offer.id, price: "100000", expirationDate: "00/00/00 00:00", message: "New offer" } })}>Counter</button>
+                </div>
+              )}
             </li>
           );
         })}
