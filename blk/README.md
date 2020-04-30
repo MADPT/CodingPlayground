@@ -1,68 +1,58 @@
+# Frontend Developer Task
+
+We are excited that you are interested in coming to work with us! Your task is to implement a simplified version of a trading platform where sellers and buyers can make offers. This task will help us get acquainted with your skills in web software development. If you have any questions, feel free to ask. :)
+
+To save time, writing tests is not required but please describe what would you test and how. We are more interested to see how you organize and structure code. Also, quite obviously, we are interested to see your visual skills as well. You can adopt our styling from the website.
+
+## Specification
+
+In this simplified app, there is just one view that lists all the offers sent to the seller (you may just hardcode the initial offers).
+
+Every offer has the following information:
+
+- name of the person who sent it
+- expiration date and time
+- price
+- free-form message
+
+In the listing view seller should be able to see all the information above. It is up to you, how you want present the information but the seller should be at least able to see the information of latest offer made between the seller and the buyer. Further, there should also be an indication whether the seller or the buyer is in turn to react next.
+
+Seller can take three different actions on every offer: **accept**, **reject** and **counter**. Please note that the seller can’t take any action to the offers that he/she has already reacted to.
+
+Further, selecting a certain action should open a modal for providing the information required for the action. Information required by certain action is specified in the following section.
+
+After filling the information the seller can send the offer. For simplicity, you don’t really have to send the offer anywhere but the UI should update as the offer would have been actually sent.
+
+## Information for actions:
+
+**Accept**
+
+- free-form message (optional)
+
+**Reject**
+
+- free-form message (required)
+
+**Counter**
+
+- price (required)
+- expiration date and time (required)
+- free-form message (optional)
+
+Please note that the expiration date and time must be later than the expiration of the offer that the user is countering to.
+
+## Technologies
+
+It would be preferable to use React for the task. You can pick other libraries freely, including the state management system.
+
+## Bonus
+
+As a bonus you may use transitions to give a premium touch to your app. :)
+
+## Code Base
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Available Scripts
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+In the project directory, you can run all [CRA scripts](https://github.com/facebook/create-react-app#creating-an-app).
