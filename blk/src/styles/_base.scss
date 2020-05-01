@@ -1,0 +1,98 @@
+$base-transition-speed: 0.25s;
+
+body {
+  margin: 0;
+}
+
+.property-offers {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  &__entry {
+    margin: 10px 0;
+    padding: 20px;
+    border: 1px solid $grey3;
+    box-shadow: 0px 0px 5px 0px $grey3;
+    transition: $base-transition-speed;
+
+    &:hover {
+      box-shadow: 0px 0px 5px 0px $grey2;
+    }
+  }
+
+  &__name {
+    margin: 0;
+    @include title(small);
+    color: $darkBlue;
+  }
+
+  &__message {
+    @include paragraph;
+    color: $grey1;
+  }
+
+  &__date {
+    @include label;
+    color: $grey2;
+  }
+
+  &__price {
+    margin: 0 0 10px 0;
+    @include title;
+    color: $darkBlue;
+    text-align: center;
+  }
+
+  &__action-button {
+    width: auto;
+    height: 40px;
+    @include tag;
+    color: $white;
+    cursor: pointer;
+    transition-duration: $base-transition-speed;
+
+    &:hover {
+      background-color: $white;
+    }
+
+    // &:not(:last-child) {
+    //   margin-right: 10px;
+    // }
+
+    &--accept {
+      background-color: $greenish;
+      border: 1px solid $greenish;
+
+      &:hover {
+        color: $greenish;
+      }
+    }
+
+    &--counter {
+      background-color: $darkBlue;
+      border: 1px solid $darkBlue;
+
+      &:hover {
+        color: $darkBlue;
+      }
+    }
+
+    &--reject {
+      background-color: $meat;
+      border: 1px solid $meat;
+
+      &:hover {
+        color: $meat;
+      }
+    }
+  }
+
+  &__action-message {
+    @include paragraph;
+    color: $darkBlue;
+    text-align: center;
+  }
+}

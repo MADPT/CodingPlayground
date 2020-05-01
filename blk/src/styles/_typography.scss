@@ -8,7 +8,6 @@ $bold: 700;
 $base-font-family: "Poppins", sans-serif;
 $base-font-weight: $regular;
 $base-font-size: 17px;
-$base-font-line-height: 30px;
 
 @mixin title($size: regular) {
   font-family: $base-font-family;
@@ -20,7 +19,6 @@ $base-font-line-height: 30px;
   } @else if $size == "small" {
     font-size: 22px;
     font-weight: $bold;
-    line-height: $base-font-line-height;
   }
 }
 
@@ -28,7 +26,11 @@ $base-font-line-height: 30px;
   font-family: $base-font-family;
   font-weight: $regular;
   font-size: $base-font-size;
-  line-height: $base-font-line-height;
+}
+
+@mixin label {
+  @include paragraph;
+  font-size: 10px;
 }
 
 @mixin tag {
