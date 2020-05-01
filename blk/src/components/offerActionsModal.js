@@ -4,17 +4,6 @@ import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
-
 const OffersActionsModal = ({ offerId, offerAction, expirationDate }) => {
   const { dispatch } = useContext(OffersContext);
   const [formValues, setFormValues] = useState({});
@@ -58,54 +47,73 @@ const OffersActionsModal = ({ offerId, offerAction, expirationDate }) => {
     <Modal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
-      style={customStyles}
       contentLabel="Offer Action Modal"
+      className="modal"
+      overlayClassName="modal--overlay"
     >
-      <h2>{capLetter(offerAction.action)} Offer</h2>
+      <div className="modal__content-wrapper">
+        <h2 className="modal__title">{capLetter(offerAction.action)} Offer</h2>
 
-      <form onSubmit={handleSubmit}>
-        {offerAction.action === "COUNTER" && (
-          <React.Fragment>
-            <div>
-              <label htmlFor="price">Price</label>
-              <input
-                id="price"
-                type="number"
-                name="price"
-                value={formValues.price || ""}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="expirationDate">Expiration Date and Time</label>
-              <input
-                id="expirationDate"
-                type="datetime-local"
-                name="expirationDate"
-                min={expirationDate}
-                value={formValues.expirationDate || ""}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-          </React.Fragment>
-        )}
-        <div>
-          <label htmlFor="message">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            cols="30"
-            rows="10"
-            required={offerAction.action === "REJECT" ? true : false}
-            value={formValues.message || ""}
-            onChange={handleInputChange}
-          ></textarea>
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-      <button onClick={closeModal}>close</button>
+        <form className="modal__form form" onSubmit={handleSubmit}>
+          {offerAction.action === "COUNTER" && (
+            <React.Fragment>
+              <div className="form__group">
+                <label className="form__label" htmlFor="price">
+                  Price
+                </label>
+                <input
+                  className="form__input"
+                  type="number"
+                  name="price"
+                  value={formValues.price || ""}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form__group">
+                <label className="form__label" htmlFor="expirationDate">
+                  Expiration Date and Time
+                </label>
+                <input
+                  className="form__input"
+                  type="datetime-local"
+                  name="expirationDate"
+                  min={expirationDate}
+                  value={formValues.expirationDate || ""}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+            </React.Fragment>
+          )}
+          <div className="form__group">
+            <label className="form__label" htmlFor="message">
+              Message
+              {offerAction.action !== "REJECT" && (
+                <span className="form__label-optional">(optional)</span>
+              )}
+            </label>
+            <textarea
+              className="form__textarea"
+              name="message"
+              maxLength="200"
+              rows="3"
+              required={offerAction.action === "REJECT" ? true : false}
+              value={formValues.message || ""}
+              onChange={handleInputChange}
+            ></textarea>
+            <span className="form__label-info">Max 200 characters</span>
+          </div>
+          <div className="form__group form__group-inline">
+            <button className="form__button" onClick={closeModal}>
+              Cancel
+            </button>
+            <button className="form__button" type="submit">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
     </Modal>
   );
 };

@@ -1,5 +1,21 @@
 $base-transition-speed: 0.25s;
 
+@mixin button($bg-color: $darkBlue, $text-color: $white) {
+  @include button-font;
+  width: 100px;
+  height: 40px;
+  background-color: $bg-color;
+  color: $text-color;
+  border: 1px solid $bg-color;
+  cursor: pointer;
+  transition-duration: $base-transition-speed;
+
+  &:hover {
+    background-color: $text-color;
+    color: $bg-color;
+  }
+}
+
 body {
   margin: 0;
 }
@@ -35,7 +51,7 @@ body {
   }
 
   &__date {
-    @include label;
+    @include label(small);
     color: $grey2;
   }
 
@@ -47,46 +63,16 @@ body {
   }
 
   &__action-button {
-    width: auto;
-    height: 40px;
-    @include tag;
-    color: $white;
-    cursor: pointer;
-    transition-duration: $base-transition-speed;
-
-    &:hover {
-      background-color: $white;
-    }
-
-    // &:not(:last-child) {
-    //   margin-right: 10px;
-    // }
-
     &--accept {
-      background-color: $greenish;
-      border: 1px solid $greenish;
-
-      &:hover {
-        color: $greenish;
-      }
+      @include button($greenish, $white);
     }
 
     &--counter {
-      background-color: $darkBlue;
-      border: 1px solid $darkBlue;
-
-      &:hover {
-        color: $darkBlue;
-      }
+      @include button($darkBlue, $white);
     }
 
     &--reject {
-      background-color: $meat;
-      border: 1px solid $meat;
-
-      &:hover {
-        color: $meat;
-      }
+      @include button($meat, $white);
     }
   }
 
@@ -94,5 +80,89 @@ body {
     @include paragraph;
     color: $darkBlue;
     text-align: center;
+  }
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+  min-width: 250px;
+  padding: 20px;
+  background-color: $white;
+  outline: none;
+
+  &--overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($darkBlue, 0.75);
+  }
+
+  &__content-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    margin: 0 0 20px 0;
+    @include title(small);
+    color: $darkBlue;
+  }
+}
+
+.form {
+  @include paragraph;
+
+  &__group {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin: 20px 0 0 0;
+    }
+
+    &-inline {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: 5px;
+    color: $grey1;
+
+    &-info {
+      @include label(small);
+    }
+
+    &-optional {
+      @include label(small);
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+  }
+
+  &__input,
+  &__textarea {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    @include label;
+    color: $grey1;
+    background-color: $white;
+    border: 1px solid $grey2;
+  }
+
+  &__button {
+    @include button($darkBlue, $white);
   }
 }

@@ -28,12 +28,17 @@ $base-font-size: 17px;
   font-size: $base-font-size;
 }
 
-@mixin label {
+@mixin label($size: regular) {
   @include paragraph;
-  font-size: 10px;
+
+  @if $size == "regular" {
+    font-size: 15px;
+  } @else if $size == "small" {
+    font-size: 10px;
+  }
 }
 
-@mixin tag {
+@mixin button-font {
   font-family: $base-font-family;
   font-weight: $bold;
   font-size: 12px;
