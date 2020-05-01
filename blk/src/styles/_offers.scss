@@ -1,0 +1,84 @@
+.property-offers {
+  margin-top: 25px;
+
+  &__section-title {
+    margin: 0 0 10px 0;
+    @include title;
+    color: $darkBlue;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  &__entry {
+    margin: 10px 0;
+    padding: 20px;
+    border: 1px solid $grey3;
+    box-shadow: 0px 0px 5px 0px $grey3;
+    transition: $base-transition-speed;
+
+    &:hover {
+      box-shadow: 0px 0px 5px 0px $grey2;
+    }
+  }
+
+  &__name {
+    margin: 0;
+    @include title(small);
+    color: $darkBlue;
+  }
+
+  &__message {
+    @include paragraph;
+    color: $grey1;
+  }
+
+  &__date {
+    @include label(small);
+    color: $grey2;
+  }
+
+  &__price {
+    margin: 0 0 10px 0;
+    @include title;
+    color: $darkBlue;
+    text-align: center;
+  }
+
+  &__action-button {
+    width: 100%;
+
+    &--wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+
+      @media only screen and (min-width: 48em) {
+        flex-direction: row;
+      }
+    }
+
+    &--accept {
+      @include button($greenish, $white);
+    }
+
+    &--counter {
+      @include button($darkBlue, $white);
+    }
+
+    &--reject {
+      @include button($meat, $white);
+    }
+  }
+
+  &__action--message {
+    @include paragraph;
+    color: $darkBlue;
+    text-align: center;
+  }
+}

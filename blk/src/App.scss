@@ -1,6 +1,9 @@
 @import "./styles/colors";
 @import "./styles/typography";
+@import "./styles/mixins";
 
 @import "../node_modules/flexboxgrid/dist/flexboxgrid.css";
 
 @import "./styles/base";
+@import "./styles/property";
+@import "./styles/offers.scss";

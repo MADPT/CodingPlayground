@@ -1,0 +1,72 @@
+.property-details {
+  position: relative;
+
+  // Override Flexbox grid
+  &.container-fluid--full-width {
+    padding: 0;
+
+    .row {
+      margin: 0;
+    }
+  }
+
+  @media only screen and (min-width: 48em) {
+    @include gradient-bottom($white);
+  }
+
+  &__image {
+    position: relative;
+    height: 250px;
+    background-position: center;
+    background-size: cover;
+
+    @include gradient-bottom($grey3);
+
+    @media only screen and (min-width: 48em) {
+      height: 550px;
+
+      &::after {
+        content: none;
+      }
+    }
+  }
+
+  &__data {
+    padding: 20px !important;
+    background-color: $grey3;
+
+    @media only screen and (min-width: 48em) {
+      padding: 50px 20px !important;
+    }
+  }
+
+  &__address,
+  &__price,
+  &__total-offers {
+    margin: 0;
+    @include title(small);
+    color: $darkBlue;
+  }
+
+  &__description {
+    margin-bottom: 20px;
+    @include paragraph;
+    color: $grey1;
+
+    @media only screen and (min-width: 48em) {
+      margin-bottom: 50px;
+    }
+  }
+
+  &__price {
+    margin-bottom: 20px;
+
+    @media only screen and (min-width: 48em) {
+      margin-bottom: 50px;
+    }
+  }
+
+  &__label {
+    display: block;
+  }
+}
