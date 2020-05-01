@@ -8,7 +8,7 @@ const OffersList = () => {
   return (
     <section className="property-offers container-fluid">
       <div className="row">
-        <div class="col-xs-12">
+        <div className="col-xs-12">
           <h1 className="property-offers__section-title">Current offers</h1>
         </div>
         {offers.length ? (
@@ -18,7 +18,7 @@ const OffersList = () => {
             })}
           </ul>
         ) : (
-          <div class="col-xs-12">
+          <div className="col-xs-12">
             <h1 className="property-offers__message">No offers available.</h1>
           </div>
         )}

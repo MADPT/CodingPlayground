@@ -28,7 +28,7 @@ const PropertyDetails = () => {
             <span className="property-details__label">Asking Price:</span> {propertyData.price} €
           </h2>
           <h3 className="property-details__total-offers">
-            <span class="property-details__label">Offers:</span>
+            <span className="property-details__label">Offers:</span>
             {offers.length}
           </h3>
         </div>
