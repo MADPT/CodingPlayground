@@ -28,7 +28,7 @@ export const offersReducer = (offers, action) => {
       return Object.assign([...offers], {
         [offerIndex]: {
           ...offers[offerIndex],
-          status: "Counter",
+          status: "Countered",
           counterOffer: {
             expirationDate: action.payload.expirationDate,
             price: action.payload.price,
