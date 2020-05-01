@@ -8,14 +8,19 @@ const OffersList = () => {
   return (
     <section className="property-offers container-fluid">
       <div className="row">
+        <div class="col-xs-12">
+          <h1 className="property-offers__section-title">Current offers</h1>
+        </div>
         {offers.length ? (
-          <ul className="property-offers__list col-xs">
+          <ul className="property-offers__list col-xs-12">
             {offers.map((offer) => {
               return <OfferDetails key={offer.id} offer={offer} />;
             })}
           </ul>
         ) : (
-          <h1 className="property-offers__message">No offers available.</h1>
+          <div class="col-xs-12">
+            <h1 className="property-offers__message">No offers available.</h1>
+          </div>
         )}
       </div>
     </section>
