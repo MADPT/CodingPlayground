@@ -59,8 +59,6 @@ const OfferDetails = ({ offer }) => {
         </div>
       </div>
 
-      {/* If new
-      <span>{offer.status}</span> */}
       {!(Object.keys(offerAction).length === 0 && offerAction.constructor === Object) && (
         <OffersActionsModal
           offerId={offer.id}
