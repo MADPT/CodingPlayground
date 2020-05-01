@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  padding: 20px;
+
+  &__logo {
+    margin: 0;
+    @include title(small);
+    color: $darkBlue;
+    line-height: initial;
+  }
+
+  &__user--wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+  }
+
+  &__name {
+    margin-left: 5px;
+    @include paragraph;
+    color: $grey1;
+  }
+}
