@@ -11,7 +11,7 @@ const OfferDetails = ({ offer }) => {
   return (
     <li className="property-offers__entry box" key={offer.id}>
       <div className="row middle-xs">
-        <div className="col-xs-10">
+        <div className="col-xs-12 col-sm-6 col-md-7 col-lg-8">
           <div className="property-offers__data--wrapper box">
             <h2 className="property-offers__name">{offer.buyerName}</h2>
             <p className="property-offers__message">{offer.buyerMessage}</p>
@@ -20,7 +20,7 @@ const OfferDetails = ({ offer }) => {
             </p>
           </div>
         </div>
-        <div className="col-xs-2">
+        <div className="col-xs-12 col-sm-6 col-md-5 col-lg-4">
           <div className="property-offers__data--wrapper box">
             <h1 className="property-offers__price">{offer.price} €</h1>
             <div className="property-offers__action-button--wrapper">

@@ -2,7 +2,6 @@ $base-transition-speed: 0.25s;
 
 @mixin button($bg-color: $darkBlue, $text-color: $white) {
   @include button-font;
-  width: 100px;
   height: 40px;
   background-color: $bg-color;
   color: $text-color;
@@ -63,6 +62,20 @@ body {
   }
 
   &__action-button {
+    width: 100%;
+
+    &--wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+
+      @media only screen and (min-width: 48em) {
+        flex-direction: row;
+      }
+    }
+
     &--accept {
       @include button($greenish, $white);
     }
@@ -164,5 +177,6 @@ body {
 
   &__button {
     @include button($darkBlue, $white);
+    width: 100px;
   }
 }
