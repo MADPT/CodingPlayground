@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+// Font weights
+$regular: 400;
+$bold: 700;
+
+// Base Font
+$base-font-family: "Poppins", sans-serif;
+$base-font-weight: $regular;
+$base-font-size: 17px;
+$base-font-line-height: 30px;
+
+@mixin title($size: regular) {
+  font-family: $base-font-family;
+
+  @if $size == "regular" {
+    font-size: 28px;
+    font-weight: $regular;
+    line-height: 40px;
+  } @else if $size == "small" {
+    font-size: 22px;
+    font-weight: $bold;
+    line-height: $base-font-line-height;
+  }
+}
+
+@mixin paragraph {
+  font-family: $base-font-family;
+  font-weight: $regular;
+  font-size: $base-font-size;
+  line-height: $base-font-line-height;
+}
+
+@mixin tag {
+  font-family: $base-font-family;
+  font-weight: $bold;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+}
