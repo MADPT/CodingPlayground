@@ -47,7 +47,11 @@ const OfferDetails = ({ offer }) => {
                 </React.Fragment>
               ) : (
                 <React.Fragment>
-                  <p className="property-offers__action--message">Offer {offer.status}</p>
+                  <p
+                    className={`property-offers__action--message property-offers__action--message-${offer.status.toLowerCase()}`}
+                  >
+                    Offer {offer.status}
+                  </p>
                 </React.Fragment>
               )}
             </div>

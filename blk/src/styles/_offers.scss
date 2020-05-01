@@ -90,5 +90,13 @@
     @include paragraph;
     color: $darkBlue;
     text-align: center;
+
+    &-accepted {
+      color: $greenish;
+    }
+
+    &-rejected {
+      color: $meat;
+    }
   }
 }
