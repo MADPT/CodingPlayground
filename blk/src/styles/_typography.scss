@@ -15,10 +15,11 @@ $base-font-size: 17px;
   @if $size == "regular" {
     font-size: 28px;
     font-weight: $regular;
-    line-height: 40px;
+    line-height: 28px;
   } @else if $size == "small" {
     font-size: 22px;
     font-weight: $bold;
+    line-height: 22px;
   }
 }
 
@@ -26,6 +27,7 @@ $base-font-size: 17px;
   font-family: $base-font-family;
   font-weight: $regular;
   font-size: $base-font-size;
+  line-height: 20px;
 }
 
 @mixin label($size: regular) {
@@ -33,8 +35,10 @@ $base-font-size: 17px;
 
   @if $size == "regular" {
     font-size: 15px;
+    line-height: 15px;
   } @else if $size == "small" {
     font-size: 10px;
+    line-height: 10px;
   }
 }
 
@@ -42,6 +46,6 @@ $base-font-size: 17px;
   font-family: $base-font-family;
   font-weight: $bold;
   font-size: 12px;
-  line-height: 16px;
+  line-height: 12px;
   text-transform: uppercase;
 }
