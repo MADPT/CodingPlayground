@@ -76,7 +76,7 @@ body {
     }
   }
 
-  &__action-message {
+  &__action--message {
     @include paragraph;
     color: $darkBlue;
     text-align: center;
@@ -104,7 +104,7 @@ body {
     background-color: rgba($darkBlue, 0.75);
   }
 
-  &__content-wrapper {
+  &__content--wrapper {
     display: flex;
     flex-direction: column;
   }
@@ -126,7 +126,7 @@ body {
       margin: 20px 0 0 0;
     }
 
-    &-inline {
+    &--inline {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -139,11 +139,11 @@ body {
     margin-bottom: 5px;
     color: $grey1;
 
-    &-info {
+    &--info {
       @include label(small);
     }
 
-    &-optional {
+    &--optional {
       @include label(small);
       margin-left: 5px;
       vertical-align: middle;

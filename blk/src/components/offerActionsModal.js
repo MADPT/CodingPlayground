@@ -51,7 +51,7 @@ const OffersActionsModal = ({ offerId, offerAction, expirationDate }) => {
       className="modal"
       overlayClassName="modal--overlay"
     >
-      <div className="modal__content-wrapper">
+      <div className="modal__content--wrapper">
         <h2 className="modal__title">{capLetter(offerAction.action)} Offer</h2>
 
         <form className="modal__form form" onSubmit={handleSubmit}>
@@ -90,7 +90,7 @@ const OffersActionsModal = ({ offerId, offerAction, expirationDate }) => {
             <label className="form__label" htmlFor="message">
               Message
               {offerAction.action !== "REJECT" && (
-                <span className="form__label-optional">(optional)</span>
+                <span className="form__label--optional">(optional)</span>
               )}
             </label>
             <textarea
@@ -102,9 +102,9 @@ const OffersActionsModal = ({ offerId, offerAction, expirationDate }) => {
               value={formValues.message || ""}
               onChange={handleInputChange}
             ></textarea>
-            <span className="form__label-info">Max 200 characters</span>
+            <span className="form__label--info">Max 200 characters</span>
           </div>
-          <div className="form__group form__group-inline">
+          <div className="form__group form__group--inline">
             <button className="form__button" onClick={closeModal}>
               Cancel
             </button>

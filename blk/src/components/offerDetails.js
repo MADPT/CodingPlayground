@@ -12,7 +12,7 @@ const OfferDetails = ({ offer }) => {
     <li className="property-offers__entry box" key={offer.id}>
       <div className="row middle-xs">
         <div className="col-xs-10">
-          <div className="property-offers__data-wrapper box">
+          <div className="property-offers__data--wrapper box">
             <h2 className="property-offers__name">{offer.buyerName}</h2>
             <p className="property-offers__message">{offer.buyerMessage}</p>
             <p className="property-offers__date">
@@ -21,7 +21,7 @@ const OfferDetails = ({ offer }) => {
           </div>
         </div>
         <div className="col-xs-2">
-          <div className="property-offers__data-wrapper box">
+          <div className="property-offers__data--wrapper box">
             <h1 className="property-offers__price">{offer.price} €</h1>
             <div className="property-offers__action-button-wrapper">
               {offer.status === "New" ? (
@@ -47,7 +47,7 @@ const OfferDetails = ({ offer }) => {
                 </React.Fragment>
               ) : (
                 <React.Fragment>
-                  <p className="property-offers__action-message">Offer {offer.status}</p>
+                  <p className="property-offers__action--message">Offer {offer.status}</p>
                 </React.Fragment>
               )}
             </div>
