@@ -23,7 +23,7 @@ const OfferDetails = ({ offer }) => {
         <div className="col-xs-2">
           <div className="property-offers__data--wrapper box">
             <h1 className="property-offers__price">{offer.price} €</h1>
-            <div className="property-offers__action-button-wrapper">
+            <div className="property-offers__action-button--wrapper">
               {offer.status === "New" ? (
                 <React.Fragment>
                   <button
