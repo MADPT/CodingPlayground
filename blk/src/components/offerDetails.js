@@ -13,7 +13,7 @@ const OfferDetails = ({ offer }) => {
       <div>
         <p>{offer.buyerName}</p>
         <p>{offer.buyerMessage}</p>
-        <p>Valid Until: {offer.expirationDate}</p>
+        <p>Valid Until: {new Date(offer.expirationDate).toLocaleString()}</p>
       </div>
       <div>
         <h1>{offer.price}</h1>

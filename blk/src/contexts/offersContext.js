@@ -8,7 +8,7 @@ const OffersContextProvider = (props) => {
     {
       id: 1,
       buyerName: "Kaappo Nikkilä",
-      expirationDate: "00/00/00 00:00",
+      expirationDate: "2020-05-10T12:00",
       price: 97000,
       buyerMessage: "Lorem Ipsum",
       status: "Counter",
@@ -21,7 +21,7 @@ const OffersContextProvider = (props) => {
     {
       id: 2,
       buyerName: "Sanni Kärkkäinen",
-      expirationDate: "00/00/00 00:00",
+      expirationDate: "2020-05-20T12:00",
       price: 97500,
       buyerMessage: "Foo Bar",
       status: "New",
@@ -29,13 +29,15 @@ const OffersContextProvider = (props) => {
     {
       id: 3,
       buyerName: "Hemmo Järvinen",
-      expirationDate: "00/00/00 00:00",
+      expirationDate: "2020-05-30T12:00",
       price: 95000,
       buyerMessage: "Lorem Foo Ipsum Bar",
       status: "New",
     },
   ]);
-  return <OffersContext.Provider value={{ offers, dispatch }}>{props.children}</OffersContext.Provider>;
+  return (
+    <OffersContext.Provider value={{ offers, dispatch }}>{props.children}</OffersContext.Provider>
+  );
 };
 
 export default OffersContextProvider;
