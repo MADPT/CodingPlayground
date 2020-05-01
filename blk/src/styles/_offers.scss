@@ -25,6 +25,16 @@
     }
   }
 
+  &__data {
+    &--wrapper {
+      margin-bottom: 20px;
+
+      @media only screen and (min-width: 48em) {
+        margin: 0;
+      }
+    }
+  }
+
   &__name {
     margin: 0;
     @include title(small);
