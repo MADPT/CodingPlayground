@@ -49,7 +49,8 @@ const OffersActionsModal = ({ offerId, offerAction, expirationDate }) => {
       onRequestClose={closeModal}
       contentLabel="Offer Action Modal"
       className="modal"
-      overlayClassName="modal--overlay"
+      overlayClassName="modal__overlay"
+      closeTimeoutMS={150}
     >
       <div className="modal__content--wrapper">
         <h2 className="modal__title">{capLetter(offerAction.action)} Offer</h2>

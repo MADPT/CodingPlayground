@@ -4,6 +4,20 @@ body {
   margin: 0;
 }
 
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+  // Note: update closeTimeoutMS on <Modal /> as well
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
 .modal {
   position: absolute;
   top: 50%;
@@ -16,7 +30,7 @@ body {
   background-color: $white;
   outline: none;
 
-  &--overlay {
+  &__overlay {
     position: fixed;
     top: 0;
     left: 0;
