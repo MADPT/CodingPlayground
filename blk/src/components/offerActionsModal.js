@@ -106,7 +106,7 @@ const OffersActionsModal = ({ offerId, offerAction, expirationDate }) => {
             <span className="form__label--info">Max 200 characters</span>
           </div>
           <div className="form__group form__group--inline">
-            <button className="form__button" onClick={closeModal}>
+            <button className="form__button" type="button" onClick={closeModal}>
               Cancel
             </button>
             <button className="form__button" type="submit">
