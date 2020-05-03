@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { OffersContext } from "../contexts/offersContext";
 
 const PropertyDetails = () => {
@@ -8,10 +8,19 @@ const PropertyDetails = () => {
     photo: "https://images.unsplash.com/photo-1572596116411-7f6cef0fb4f4",
     price: 96000,
   });
+  const [showData, setShowData] = useState(false);
   const { offers } = useContext(OffersContext);
 
+  useEffect(() => {
+    setShowData(true);
+  }, []);
+
   return (
-    <section className="property-details container-fluid container-fluid--full-width">
+    <section
+      className={`property-details container-fluid container-fluid--full-width ${
+        showData && "showData"
+      }`}
+    >
       <div className="row">
         <div
           className="col-xs-12 col-sm-8 property-details__image"

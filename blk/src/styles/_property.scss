@@ -29,14 +29,44 @@
         content: none;
       }
     }
+
+    .showData & {
+      animation: showImage 2s ease;
+    }
+
+    @keyframes showImage {
+      from {
+        opacity: 0;
+        visibility: hidden;
+      }
+      to {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
   }
 
   &__data {
     padding: 20px !important;
     background-color: $grey3;
+    overflow: hidden;
 
     @media only screen and (min-width: 48em) {
       padding: 50px 20px !important;
+    }
+
+    .showData & > * {
+      animation: leftToRight 1s ease-in-out 1s both;
+    }
+
+    @keyframes leftToRight {
+      from {
+        transform: translateX(calc(-100% - 20px));
+      }
+      to {
+        left: 0;
+        transform: translateX(0);
+      }
     }
   }
 
